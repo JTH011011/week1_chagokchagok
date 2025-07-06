@@ -76,7 +76,7 @@ fun LoginScreen(
             isError = id.isNotEmpty() && !isValidId(id),
             supportingText = {
                 if (id.isNotEmpty() && !isValidId(id)) {
-                    Text("영문 소문자/숫자만 허용, 4~20자", fontSize = 12.sp, color = Color.Gray)
+                    Text("영문/숫자만 허용, 4~20자", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             modifier = Modifier.fillMaxWidth(),

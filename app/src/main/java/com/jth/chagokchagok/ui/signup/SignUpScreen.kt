@@ -97,7 +97,7 @@ fun SignUpScreen(
             isError = id.isNotEmpty() && !viewModel.isIdValid,
             supportingText = {
                 if (id.isNotEmpty() && !viewModel.isIdValid) {
-                    Text("4~20자, 영어, 숫자만 허용", fontSize = 12.sp, color = Color.Gray)
+                    Text("4~20자, 영문, 숫자만 허용", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
@@ -114,7 +114,7 @@ fun SignUpScreen(
             isError = password.isNotEmpty() && !viewModel.isPasswordValid,
             supportingText = {
                 if (password.isNotEmpty() && !viewModel.isPasswordValid) {
-                    Text("영문, 숫자, 특수문자 중 2가지 이상 포함, 8~20자", fontSize = 12.sp, color = Color.Gray)
+                    Text("영문, 숫자, 특수문자 포함, 8~20자", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             modifier = Modifier.fillMaxWidth(),
