@@ -9,15 +9,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -60,7 +59,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.jth.chagokchagok.R
@@ -75,7 +73,7 @@ import java.time.YearMonth
 @Composable
 fun HomeScreen(
     navController: NavController,
-    viewModel: HomeViewModel = viewModel()
+    viewModel: HomeViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
     val selectedDate = remember { mutableStateOf(LocalDate.now()) }
@@ -103,9 +101,10 @@ fun HomeScreen(
 
     Scaffold(
         topBar = { HomeTopBar() },
+        contentWindowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                icon = { Icon(Icons.Default.Add, contentDescription = "Add") },
+                icon = { Icon(Icons.Default.Add, contentDescription = "Add")},
                 text = {
                     Text(
                         "관람 추가하기",
@@ -238,14 +237,13 @@ fun HomeScreen(
     }
 }
 
-
 /* ────────── UI 컴포저블 ────────── */
 @Composable
 fun HomeTopBar() {
     Row(
         Modifier
             .fillMaxWidth()
-            .padding(start = 20.dp, top = 64.dp, bottom = 8.dp),
+            .padding(start = 20.dp, top = 24.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
@@ -515,50 +513,6 @@ fun CalendarHeader(
         }
     }
 }
-
-
-
-@Composable
-fun BottomNavBar(
-    currentRoute: String,
-    onTabSelected: (String) -> Unit
-) {
-    val navItems = listOf(
-        BottomNavItem("홈", Icons.Default.Home, "home"),
-        BottomNavItem("사진첩", Icons.Default.PhotoAlbum, "gallery"),
-        BottomNavItem("마이페이지", Icons.Default.Person, "mypage")
-    )
-
-    NavigationBar {
-        navItems.forEach { item ->
-            val selected = currentRoute == item.route
-            NavigationBarItem(
-                selected = selected,
-                onClick = { onTabSelected(item.route) },
-                icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.label,
-                        tint = if (selected) Color(0xFFFF9800) else Color.Gray
-                    )
-                },
-                label = {
-                    Text(
-                        text = item.label,
-                        color = if (selected) Color(0xFFFF9800) else Color.Gray,
-                        fontSize = 12.sp
-                    )
-                }
-            )
-        }
-    }
-}
-
-data class BottomNavItem(
-    val label: String,
-    val icon: ImageVector,
-    val route: String
-)
 
 
 
