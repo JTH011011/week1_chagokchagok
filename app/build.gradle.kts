@@ -70,5 +70,11 @@ dependencies {
     implementation(libs.compose.calendar)
     implementation(libs.androidx.compose.material.icons.extended)
 
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    // ✅ (선택) OkHttp 로그 보기 좋게 하고 싶으면 아래도 추가
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
+
 
 }

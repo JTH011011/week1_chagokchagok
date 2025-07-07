@@ -29,7 +29,7 @@ fun AppNavGraph(
     NavHost(
         navController = navController,
         //Todo:디버깅시 여기를 수정
-        startDestination = Screen.MainShell.route
+        startDestination = Screen.Login.route
     ) {
         composable(Screen.Login.route) {
             val id by loginViewModel.id.collectAsState("")
