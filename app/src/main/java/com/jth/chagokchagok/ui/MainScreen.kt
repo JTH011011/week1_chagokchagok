@@ -27,6 +27,7 @@ import com.jth.chagokchagok.ui.album.AlbumScreen
 import com.jth.chagokchagok.ui.home.HomeScreen
 import com.jth.chagokchagok.ui.mypage.MyPageScreen
 import com.jth.chagokchagok.navigation.BottomNavItem
+import com.jth.chagokchagok.ui.mypage.MyPageViewModel
 
 @Composable
 fun MainScreen(
@@ -71,7 +72,7 @@ fun MainScreen(
                 AlbumScreen(navController = outerNavController)
             }
             composable(BottomNavItem.MyPage.route) {
-                MyPageScreen(navController = outerNavController)
+                MyPageScreen(navController = outerNavController, viewModel = MyPageViewModel())
             }
         }
     }
