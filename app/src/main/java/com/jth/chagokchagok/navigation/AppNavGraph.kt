@@ -28,6 +28,7 @@ fun AppNavGraph(
     val modifierWithPadding = Modifier.padding(innerPadding)
     NavHost(
         navController = navController,
+        //Todo:디버깅시 여기를 수정
         startDestination = Screen.MainShell.route
     ) {
         composable(Screen.Login.route) {
@@ -62,18 +63,13 @@ fun AppNavGraph(
         composable(Screen.PlanStart.route) {
             PlanStartScreen(
                 onStartClick = {
-                    navController.navigate(Screen.PlanBudget.create("홍길동"))
+                    navController.navigate(Screen.PlanBudget.route)
                 }
             )
         }
 
-        composable(
-            route = Screen.PlanBudget.route,
-            arguments = listOf(navArgument("userName") { defaultValue = "홍길동" })
-        ) { entry ->
-            val name = entry.arguments?.getString("userName") ?: "홍길동"
+        composable(Screen.PlanBudget.route) {
             planBudgetScreen(
-                userName = name,
                 onPreviousClick = { navController.popBackStack() },
                 onCompleteClick = { budget ->
                     navController.navigate(Screen.MainShell.create()) {
@@ -82,6 +78,7 @@ fun AppNavGraph(
                 }
             )
         }
+
 
         composable(Screen.MainShell.route) {
             MainScreen(outerNavController = navController)

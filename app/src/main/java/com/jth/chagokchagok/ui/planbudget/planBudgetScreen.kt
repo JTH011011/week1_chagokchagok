@@ -36,7 +36,6 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun planBudgetScreen(
-    userName: String,
     onPreviousClick: () -> Unit,
     onCompleteClick: (Int) -> Unit
 ) {
@@ -68,6 +67,7 @@ fun planBudgetScreen(
 
         Text("Q.", color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)
 
+        val userName = "추후에 백엔드" // TODO: 백엔드
         Text(
             text = "$userName 님,\n이번달 문화생활에\n얼마를 쓰고 싶으신가요?",
             fontSize = 24.sp,

@@ -14,9 +14,7 @@ sealed class Screen(val route: String) {
     object SignUp     : Screen("signup")
     object PlanStart  : Screen("planstart")
 
-    object PlanBudget : Screen("planbudget/{userName}") {
-        fun create(userName: String) = "planbudget/$userName"
-    }
+    object PlanBudget : Screen("planbudget")
 
     /** BottomBar를 품은 메인 셸(= MainScreen) */
     object MainShell  : Screen("main") {
