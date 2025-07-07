@@ -11,5 +11,6 @@ public interface BudgetService {
     List<BudgetResponse> getBudgetsByUser(String userId);
     BudgetResponse getBudgetByMonth(String userId, YearMonth yearMonth);
     BudgetResponse updateBudget(Long id, BudgetRequest request);
+    BudgetResponse updateBudgetByMonth(String userId, YearMonth yearMonth, BudgetRequest request);
     void deleteBudget(Long id);
 }

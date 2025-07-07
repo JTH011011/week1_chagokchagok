@@ -1,5 +1,6 @@
 package com.jth.chagokchagok.ui.planbudget
 
+import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,12 +31,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jth.chagokchagok.data.remote.RetrofitProvider
+import com.jth.chagokchagok.data.remote.dto.BudgetRequest
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.time.YearMonth
 
 @Composable
 fun planBudgetScreen(
+    userId : String,
     onPreviousClick: () -> Unit,
     onCompleteClick: (Int) -> Unit
 ) {
@@ -57,7 +67,7 @@ fun planBudgetScreen(
 
         Text(
             text = "한 달 예산 파악",
-            fontSize = 14.sp,
+            fontSize = 20.sp,
             color = Color.Black,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -67,9 +77,8 @@ fun planBudgetScreen(
 
         Text("Q.", color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)
 
-        val userName = "추후에 백엔드" // TODO: 백엔드
         Text(
-            text = "$userName 님,\n이번달 문화생활에\n얼마를 쓰고 싶으신가요?",
+            text = "이번달 문화생활에\n얼마를 쓰고 싶으신가요?",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.Black,
@@ -173,8 +182,36 @@ fun planBudgetScreen(
 
             Spacer(modifier = Modifier.width(16.dp))
 
+            val context = LocalContext.current
             Button(
-                onClick = { finalAmount?.let { onCompleteClick(it) } },
+                onClick = {
+                    finalAmount?.let { budgetAmount ->
+                        val now = YearMonth.now()
+                        val request = BudgetRequest(
+                            userId = userId,
+                            yearMonth = now.toString(), // 예: "2025-07"
+                            budget = budgetAmount
+                        )
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            try {
+                                RetrofitProvider.budgetApi.updateBudget(
+                                    userId = userId,
+                                    yearMonth = now.toString(),
+                                    request = request
+                                )
+                                withContext(Dispatchers.Main) {
+                                    Toast.makeText(context,"예산이 업데이트되었습니다.", Toast.LENGTH_SHORT).show()
+                                        // 예산 업데이트 성공
+                                    onCompleteClick(budgetAmount)
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                                // 예: 에러 Snackbar 보여주기 등
+                            }
+                        }
+                    }
+                },
                 enabled = isValid,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = if (isValid) Color(0xFFFF9800) else Color.LightGray

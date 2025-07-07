@@ -77,6 +77,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
 
     implementation("com.h2database:h2:2.1.214")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 
 
 }

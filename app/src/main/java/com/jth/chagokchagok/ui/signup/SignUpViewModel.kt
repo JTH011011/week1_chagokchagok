@@ -2,6 +2,7 @@ package com.jth.chagokchagok.ui.signup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jth.chagokchagok.data.preferences.UserPreferences
 import com.jth.chagokchagok.data.remote.dto.SignupRequest
 import com.jth.chagokchagok.data.repository.UserRepository
 import com.jth.chagokchagok.util.*
@@ -17,7 +18,15 @@ sealed interface SignUpUiState {
     data class Error(val message: String) : SignUpUiState
 }
 
-class SignUpViewModel : ViewModel() {
+class SignUpViewModel(
+    private val userPreferences: UserPreferences
+) : ViewModel() {
+
+    fun saveUserId(userId: String) {
+        viewModelScope.launch {
+            userPreferences.saveUserId(userId)
+        }
+    }
 
     // 사용자 입력값 상태
     private val _name = MutableStateFlow("")
@@ -64,6 +73,7 @@ class SignUpViewModel : ViewModel() {
             repository.signUp(request)
                 .onSuccess {
                     _uiState.value = SignUpUiState.Success(it.message)
+                    saveUserId(it.username ?: "")
                 }
                 .onFailure {
                     _uiState.value = SignUpUiState.Error(it.message ?: "오류가 발생했습니다")

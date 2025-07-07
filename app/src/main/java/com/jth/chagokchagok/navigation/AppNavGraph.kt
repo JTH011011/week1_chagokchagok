@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.*
 import androidx.navigation.compose.*
+import com.jth.chagokchagok.data.preferences.UserPreferences
 import com.jth.chagokchagok.ui.MainScreen
 import com.jth.chagokchagok.ui.addview.AddViewScreen
 import com.jth.chagokchagok.ui.album.AlbumScreen
@@ -18,6 +20,7 @@ import com.jth.chagokchagok.ui.planstart.PlanStartScreen
 import com.jth.chagokchagok.ui.home.*
 import com.jth.chagokchagok.ui.mypage.MyPageScreen
 import com.jth.chagokchagok.ui.editbudget.EditBudgetScreen
+import com.jth.chagokchagok.ui.login.LoginUiState
 
 @Composable
 fun AppNavGraph(
@@ -32,19 +35,25 @@ fun AppNavGraph(
         startDestination = Screen.Login.route
     ) {
         composable(Screen.Login.route) {
-            val id by loginViewModel.id.collectAsState("")
-            val pw by loginViewModel.password.collectAsState("")
+            val id by loginViewModel.id.collectAsState()
+            val pw by loginViewModel.password.collectAsState()
+            val uiState by loginViewModel.uiState.collectAsState()
+
+            LaunchedEffect(uiState) {
+                if (uiState is LoginUiState.Success) {
+                    val username = (uiState as LoginUiState.Success).username
+                    navController.navigate(Screen.MainShell.create()) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
+                    }
+                }
+            }
 
             LoginScreen(
                 id = id,
                 password = pw,
                 onIdChanged = loginViewModel::onIdChanged,
                 onPasswordChanged = loginViewModel::onPasswordChanged,
-                onLoginClick = {
-                    navController.navigate(Screen.MainShell.create()) {
-                        popUpTo(Screen.Login.route) { inclusive = true }
-                    }
-                },
+                onLoginClick = loginViewModel::onLoginClicked,
                 onSignUpClick = {
                     navController.navigate(Screen.SignUp.route)
                 }
@@ -69,7 +78,11 @@ fun AppNavGraph(
         }
 
         composable(Screen.PlanBudget.route) {
+            val context = LocalContext.current
+            val userPreferences = UserPreferences(context)
+            val userId by userPreferences.userIdFlow.collectAsState(initial = "")
             planBudgetScreen(
+                userId = userId!!,
                 onPreviousClick = { navController.popBackStack() },
                 onCompleteClick = { budget ->
                     navController.navigate(Screen.MainShell.create()) {

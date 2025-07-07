@@ -26,19 +26,28 @@ import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
 import androidx.compose.ui.platform.LocalContext
 import android.widget.Toast
 import androidx.compose.runtime.LaunchedEffect
-
-
+import com.jth.chagokchagok.data.preferences.UserPreferences
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 
 @Composable
 fun SignUpScreen(
     onSignUpComplete: () -> Unit,
     onBackClick: () -> Unit,
-    viewModel: SignUpViewModel = viewModel()
 ) {
+    val context = LocalContext.current
+    val userPreferences = remember { UserPreferences(context) }
+
+    val viewModel: SignUpViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return SignUpViewModel(userPreferences) as T
+            }
+        }
+    )
 
     val uiState by viewModel.uiState.collectAsState()
-    val context = LocalContext.current
 
     // ✅ 상태 변화 감지 → 성공/실패 처리
     when (val state = uiState) {

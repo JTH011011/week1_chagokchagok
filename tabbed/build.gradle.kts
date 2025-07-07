@@ -21,13 +21,13 @@ java {
 }
 
 repositories {
-    mavenCentral
+    mavenCentral()
 }
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.h2database:h2:2.1.214")
+    implementation("com.h2database:h2:2.1.214")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

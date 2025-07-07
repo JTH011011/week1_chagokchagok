@@ -29,6 +29,9 @@ public class BudgetController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<BudgetResponse>> getBudgetsByUser(@PathVariable("userId") String userId) {
+
+        System.err.println(":::::::::::::::::::::aa");
+
         List<BudgetResponse> budgets = budgetService.getBudgetsByUser(userId);
         return ResponseEntity.ok(budgets);
     }
@@ -37,16 +40,21 @@ public class BudgetController {
     public ResponseEntity<BudgetResponse> getBudgetByMonth(
             @PathVariable("userId") String userId,
             @PathVariable("yearMonth") String yearMonth) {
+
+        System.err.println(":::::::::::::::::::::bbbbbb");
+
         YearMonth month = YearMonth.parse(yearMonth);
         BudgetResponse budget = budgetService.getBudgetByMonth(userId, month);
         return ResponseEntity.ok(budget);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<BudgetResponse> updateBudget(
-            @PathVariable("id") Long id,
+    @PutMapping("/user/{userId}/month/{yearMonth}")
+    public ResponseEntity<BudgetResponse> updateBudgetByMonth(
+            @PathVariable("userId") String userId,
+            @PathVariable("yearMonth") String yearMonth,
             @RequestBody BudgetRequest request) {
-        BudgetResponse budget = budgetService.updateBudget(id, request);
+        YearMonth month = YearMonth.parse(yearMonth);
+        BudgetResponse budget = budgetService.updateBudgetByMonth(userId, month, request);
         return ResponseEntity.ok(budget);
     }
 

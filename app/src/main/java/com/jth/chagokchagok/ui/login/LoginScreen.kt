@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
 import com.jth.chagokchagok.util.isValidId
 import com.jth.chagokchagok.util.isValidPassword
@@ -30,7 +31,7 @@ fun LoginScreen(
     onIdChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onLoginClick: () -> Unit,
-    onSignUpClick: () -> Unit
+    onSignUpClick: () -> Unit,
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
 
