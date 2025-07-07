@@ -30,7 +30,7 @@ public class UserController {
             return ResponseEntity.ok(response);
         } catch (UserException e) {
             SignupResponse errorResponse = new SignupResponse();
-            errorResponse.setMessage("이미 등록된 사용자입니다.");
+            errorResponse.setMessage("Error Occured.");
             return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
         }
     }

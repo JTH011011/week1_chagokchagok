@@ -23,6 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
+import androidx.compose.ui.platform.LocalContext
+import android.widget.Toast
+import androidx.compose.runtime.LaunchedEffect
+
+
+
 
 @Composable
 fun SignUpScreen(
@@ -30,6 +36,26 @@ fun SignUpScreen(
     onBackClick: () -> Unit,
     viewModel: SignUpViewModel = viewModel()
 ) {
+
+    val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
+
+    // ✅ 상태 변화 감지 → 성공/실패 처리
+    when (val state = uiState) {
+        is SignUpUiState.Success -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+                onSignUpComplete()
+            }
+        }
+        is SignUpUiState.Error -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        else -> {}
+    }
+
     val name by viewModel.name.collectAsState()
     val id by viewModel.id.collectAsState()
     val password by viewModel.password.collectAsState()
@@ -133,7 +159,9 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = onSignUpComplete,
+            onClick = {
+                viewModel.requestSignUp()
+            },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier
