@@ -1,0 +1,182 @@
+2025-07-09T00:00:06.134+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/performance/user/qwerty123", parameters={}
+2025-07-09T00:00:06.144+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getPerformancesByUser(String)
+2025-07-09T00:00:06.158+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:00:06.159+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@7f211d95]]
+2025-07-09T00:00:06.161+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:00:06.468+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/uploads/9e227590-3e88-47b7-a7f7-cd4f52eec5ef.jpg", parameters={}
+2025-07-09T00:00:06.474+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/]]
+2025-07-09T00:00:07.499+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:00:15.552+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:00:15.553+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:00:15.561+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:00:15.562+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@28330415]
+2025-07-09T00:00:15.564+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:01:07.418+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/performance/user/qwerty123", parameters={}
+2025-07-09T00:01:07.421+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getPerformancesByUser(String)
+2025-07-09T00:01:07.427+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:01:07.427+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@1c724e93]]
+2025-07-09T00:01:07.428+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:01:08.904+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:01:08.905+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:01:08.911+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:01:08.911+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@370cc439]
+2025-07-09T00:01:08.912+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:01:10.625+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/performance/user/qwerty123", parameters={}
+2025-07-09T00:01:10.627+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getPerformancesByUser(String)
+2025-07-09T00:01:10.634+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:01:10.635+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@61fc3fbb]]
+2025-07-09T00:01:10.636+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:02:03.688+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:02:03.690+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:02:03.698+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:02:03.699+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@1d73df5d]
+2025-07-09T00:02:03.700+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:02:46.555+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/performance/user/qwerty123", parameters={}
+2025-07-09T00:02:46.556+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getPerformancesByUser(String)
+2025-07-09T00:02:46.562+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:02:46.562+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@4b2c8dfd]]
+2025-07-09T00:02:46.563+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:03:35.028+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:03:35.030+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:03:35.036+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:03:35.036+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@13a017db]
+2025-07-09T00:03:35.037+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:03:44.755+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:03:44.756+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:03:44.763+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:03:44.764+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@161674c3]
+2025-07-09T00:03:44.765+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:03:59.520+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:03:59.521+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:03:59.530+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:03:59.531+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@48a9eb8d]
+2025-07-09T00:03:59.532+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:12:08.173+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/performance", parameters={}
+2025-07-09T00:12:08.176+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getAllPerformances()
+2025-07-09T00:12:08.207+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2025-07-09T00:12:08.209+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@5586f5f8, com.android.tabbed.dto.PerformanceResponseD (truncated)...]
+2025-07-09T00:12:08.211+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:12:24.994+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/user/login", parameters={}
+2025-07-09T00:12:24.995+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.UserController#login(LoginRequest)
+2025-07-09T00:12:24.998+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.LoginRequest@77c5b510]
+2025-07-09T00:12:25.008+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:12:25.008+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.LoginResponse@7f9a38b]
+2025-07-09T00:12:25.010+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:12:25.972+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:12:25.973+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:12:25.982+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:12:25.983+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@372f53a0]
+2025-07-09T00:12:25.984+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:12:37.169+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/user/login", parameters={}
+2025-07-09T00:12:37.170+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.UserController#login(LoginRequest)
+2025-07-09T00:12:37.171+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.LoginRequest@75e17732]
+2025-07-09T00:12:37.178+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:12:37.179+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.LoginResponse@584e058a]
+2025-07-09T00:12:37.180+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:12:38.057+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:12:38.058+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:12:38.067+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:12:38.067+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@ab852c3]
+2025-07-09T00:12:38.069+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:13:32.939+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : POST "/file/upload", parameters={multipart}
+2025-07-09T00:13:33.732+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.FileController#uploadImage(MultipartFile)
+2025-07-09T00:13:33.736+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:13:33.736+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.controller.FileController$ImageUrlResponse@5ed0b506]
+2025-07-09T00:13:33.737+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:13:33.808+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/performance", parameters={}
+2025-07-09T00:13:33.809+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#createPerformance(PerformanceRequest)
+2025-07-09T00:13:33.810+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.PerformanceRequest@26d7f3c]
+2025-07-09T00:13:33.820+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:13:33.821+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.PerformanceResponseDTO@25c3f42a]
+2025-07-09T00:13:33.821+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2025-07-09T00:13:34.382+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/budget/user//month/2025-07", parameters={}
+2025-07-09T00:13:34.384+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/], ServletContext [/]]
+2025-07-09T00:13:34.385+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
+2025-07-09T00:13:34.392+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource budget/user/month/2025-07.]
+2025-07-09T00:13:34.393+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 404 NOT_FOUND
+2025-07-09T00:13:34.401+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for GET "/error", parameters={}
+2025-07-09T00:13:34.402+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2025-07-09T00:13:34.408+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:13:34.409+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{timestamp=Wed Jul 09 00:13:34 KST 2025, status=404, error=Not Found, path=/budget/user//month/2025- (truncated)...]
+2025-07-09T00:13:34.414+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 404
+2025-07-09T00:14:11.157+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/performance", parameters={}
+2025-07-09T00:14:11.158+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getAllPerformances()
+2025-07-09T00:14:11.164+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2025-07-09T00:14:11.164+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@7355528c, com.android.tabbed.dto.PerformanceResponseD (truncated)...]
+2025-07-09T00:14:11.166+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:15:30.761+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/user/login", parameters={}
+2025-07-09T00:15:30.764+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.UserController#login(LoginRequest)
+2025-07-09T00:15:30.766+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.LoginRequest@7b9a183]
+2025-07-09T00:15:30.773+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:15:30.774+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.LoginResponse@1d8ecad7]
+2025-07-09T00:15:30.776+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:15:31.727+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:15:31.728+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:15:31.738+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:15:31.738+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@514e1e71]
+2025-07-09T00:15:31.741+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:15:53.576+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/user/login", parameters={}
+2025-07-09T00:15:53.577+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.UserController#login(LoginRequest)
+2025-07-09T00:15:53.578+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.LoginRequest@55212124]
+2025-07-09T00:15:53.583+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:15:53.584+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.LoginResponse@760923a6]
+2025-07-09T00:15:53.585+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:15:54.524+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:15:54.525+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:15:54.533+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:15:54.534+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@640a4835]
+2025-07-09T00:15:54.535+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:16:27.526+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : POST "/file/upload", parameters={multipart}
+2025-07-09T00:16:28.296+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.FileController#uploadImage(MultipartFile)
+2025-07-09T00:16:28.299+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:16:28.299+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.controller.FileController$ImageUrlResponse@1b0dd4e]
+2025-07-09T00:16:28.301+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:16:28.463+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/performance", parameters={}
+2025-07-09T00:16:28.464+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#createPerformance(PerformanceRequest)
+2025-07-09T00:16:28.466+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.PerformanceRequest@385724bd]
+2025-07-09T00:16:28.476+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:16:28.476+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.PerformanceResponseDTO@355e5b9e]
+2025-07-09T00:16:28.479+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 201 CREATED
+2025-07-09T00:16:29.079+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:16:29.079+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:16:29.086+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:16:29.086+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@7b5316fb]
+2025-07-09T00:16:29.087+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:18.646+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/performance", parameters={}
+2025-07-09T00:17:18.647+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getAllPerformances()
+2025-07-09T00:17:18.654+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json;q=0.8', given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7] and supported [application/json, application/*+json]
+2025-07-09T00:17:18.654+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@7c3d3781, com.android.tabbed.dto.PerformanceResponseD (truncated)...]
+2025-07-09T00:17:18.655+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:27.165+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/uploads/ef9c8aab-08db-4900-85c5-ead11bf9e2c1.jpg", parameters={}
+2025-07-09T00:17:27.166+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/]]
+2025-07-09T00:17:27.181+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:50.822+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : POST "/user/login", parameters={}
+2025-07-09T00:17:50.824+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.UserController#login(LoginRequest)
+2025-07-09T00:17:50.826+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.android.tabbed.dto.LoginRequest@19b81481]
+2025-07-09T00:17:50.835+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:17:50.836+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.LoginResponse@7ef4cd93]
+2025-07-09T00:17:50.837+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:51.401+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:17:51.402+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:17:51.411+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:17:51.411+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@4d396ec3]
+2025-07-09T00:17:51.413+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:54.682+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/performance/user/qwerty123", parameters={}
+2025-07-09T00:17:54.683+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.PerformanceController#getPerformancesByUser(String)
+2025-07-09T00:17:54.691+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:17:54.691+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[com.android.tabbed.dto.PerformanceResponseDTO@7665ecbb, com.android.tabbed.dto.PerformanceResponseD (truncated)...]
+2025-07-09T00:17:54.692+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:54.896+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/uploads/9e227590-3e88-47b7-a7f7-cd4f52eec5ef.jpg", parameters={}
+2025-07-09T00:17:54.897+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/]]
+2025-07-09T00:17:54.903+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 304 NOT_MODIFIED
+2025-07-09T00:17:54.905+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/uploads/ef9c8aab-08db-4900-85c5-ead11bf9e2c1.jpg", parameters={}
+2025-07-09T00:17:54.906+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/]]
+2025-07-09T00:17:55.235+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:17:57.547+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/uploads/4937233e-9331-4de8-931d-417406afa7da.jpg", parameters={}
+2025-07-09T00:17:57.548+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [URL [file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/]]
+2025-07-09T00:17:58.188+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-07-09T00:18:13.939+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/budget/user/qwerty123/month/2025-07", parameters={}
+2025-07-09T00:18:13.940+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.android.tabbed.controller.BudgetController#getBudgetByMonth(String, String)
+2025-07-09T00:18:13.947+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-07-09T00:18:13.948+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [com.android.tabbed.dto.BudgetResponse@4aecea8]
+2025-07-09T00:18:13.949+09:00 DEBUG 43188 --- [tabbed] [http-nio-0.0.0.0-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

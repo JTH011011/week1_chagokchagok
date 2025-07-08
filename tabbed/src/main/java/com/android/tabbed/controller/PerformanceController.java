@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import java.io.File;
-import java.nio.file.Files;
-import java.util.Base64;
-import java.util.UUID;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +21,6 @@ public class PerformanceController {
 
     @PostMapping
     public ResponseEntity<PerformanceResponseDTO> createPerformance(@RequestBody PerformanceRequest request) {
-        // Performance 엔티티 생성
         Performance performance = new Performance();
         performance.setUserId(request.getUserId());
         performance.setName(request.getName());
@@ -33,49 +29,9 @@ public class PerformanceController {
         performance.setAttendingDate(request.getAttendingDate());
         performance.setSeat(request.getSeat());
         performance.setPrice(request.getPrice());
+        performance.setPhotoUrl(request.getPhotoUrl()); // URL만 저장
 
         try {
-            // 사진 저장
-            if (request.getPhoto() != null) {
-                // base64 디코딩
-                byte[] photoBytes = Base64.getDecoder().decode(request.getPhoto());
-
-                // 파일명 생성: uuid_타임스탬프.jpg
-                String fileName = UUID.randomUUID().toString() + "_" + System.currentTimeMillis();
-                String fileExtension = "jpg"; // 기본값
-
-                // base64 데이터에서 MIME 타입 추출
-                if (request.getPhoto().startsWith("data:")) {
-                    int commaIndex = request.getPhoto().indexOf(",");
-                    if (commaIndex > 0) {
-                        String mimeType = request.getPhoto().substring(5, commaIndex);
-                        // MIME 타입에 따라 확장자 결정
-                        if (mimeType.contains("jpeg") || mimeType.contains("jpg")) {
-                            fileExtension = "jpg";
-                        } else if (mimeType.contains("png")) {
-                            fileExtension = "png";
-                        } else if (mimeType.contains("gif")) {
-                            fileExtension = "gif";
-                        }
-                    }
-                }
-                fileName += "." + fileExtension;
-
-                // uploads 디렉토리에 저장
-                String uploadDir = "uploads";
-                File dir = new File(uploadDir);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-
-                File file = new File(uploadDir + File.separator + fileName);
-                Files.write(file.toPath(), photoBytes);
-
-                // 파일 경로 설정
-                request.setPhotoPath(file.getAbsolutePath());
-                performance.setPhotoPath(request.getPhotoPath());
-            }
-
             Performance createdPerformance = performanceService.createPerformance(performance);
             PerformanceResponseDTO response = PerformanceResponseDTO.fromEntity(createdPerformance);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -90,6 +46,27 @@ public class PerformanceController {
         Performance performance = performanceService.getPerformance(id);
         PerformanceResponseDTO responseDTO = PerformanceResponseDTO.fromEntity(performance);
         return ResponseEntity.ok(responseDTO);
+    }
+
+    @GetMapping("/byphotourl")
+    public ResponseEntity<PerformanceResponseDTO> getPerformanceByPhotourl(@RequestParam("photourl") String photourl) {
+        Performance performance = performanceService.getPerformanceByPhotoUrl(photourl);
+        if (performance == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(PerformanceResponseDTO.fromEntity(performance));
+    }
+
+    @GetMapping("/photourls")
+    public ResponseEntity<List<String>> getPhotoUrlsByYearMonth(@RequestParam("year") int year, @RequestParam("month") int month) {
+        List<String> photoUrls = performanceService.getPhotoUrlsByYearMonth(year, month);
+        return ResponseEntity.ok(photoUrls);
+    }
+
+    @GetMapping("/user/{userId}/photourls")
+    public ResponseEntity<List<String>> getPhotoUrlsByUser(@PathVariable("userId") String userId) {
+        List<String> photoUrls = performanceService.getPhotoUrlsByUser(userId);
+        return ResponseEntity.ok(photoUrls);
     }
 
     @GetMapping

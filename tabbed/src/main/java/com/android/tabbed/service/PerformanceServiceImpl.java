@@ -14,6 +14,27 @@ import java.util.Optional;
 @Service
 @Transactional
 public class PerformanceServiceImpl implements PerformanceService {
+    @Override
+    public Performance getPerformanceByPhotoUrl(String photoUrl) {
+        List<Performance> list = performanceRepository.findAll();
+        return list.stream().filter(p -> photoUrl.equals(p.getPhotoUrl())).findFirst().orElse(null);
+    }
+
+    @Override
+    public List<String> getPhotoUrlsByYearMonth(int year, int month) {
+        List<Performance> list = performanceRepository.findAll();
+        return list.stream()
+                .filter(p -> p.getAttendingDate() != null && p.getAttendingDate().getYear() == year && p.getAttendingDate().getMonthValue() == month)
+                .map(Performance::getPhotoUrl)
+                .filter(url -> url != null && !url.isEmpty())
+                .toList();
+    }
+
+    @Override
+    public List<String> getPhotoUrlsByUser(String userId) {
+        List<Performance> list = performanceRepository.findByUserId(userId);
+        return list.stream().map(Performance::getPhotoUrl).filter(url -> url != null && !url.isEmpty()).toList();
+    }
     @Autowired
     private PerformanceRepository performanceRepository;
     @Autowired

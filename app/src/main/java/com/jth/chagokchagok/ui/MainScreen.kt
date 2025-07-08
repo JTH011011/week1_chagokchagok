@@ -82,7 +82,7 @@ fun MainScreen(
             }
             composable(BottomNavItem.MyPage.route) {
                 val vm: MyPageViewModel = viewModel()
-                MyPageScreen(navController = outerNavController, viewModel = vm)
+                MyPageScreen(navController = outerNavController, viewModel = vm, userPreferences = UserPreferences(LocalContext.current))
             }
         }
     }

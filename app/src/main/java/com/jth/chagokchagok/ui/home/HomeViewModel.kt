@@ -45,6 +45,7 @@ class HomeViewModel : ViewModel() {
                 e.printStackTrace()
                 println("💥 예산 불러오기 실패: ${e.message}")
             }
+
         }
     }
 }

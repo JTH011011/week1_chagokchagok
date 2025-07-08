@@ -26,13 +26,14 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.h2database:h2:2.1.214")
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.2")
+    implementation("org.springframework.boot:spring-boot-starter")
 }
 
 tasks.withType<Test> {
