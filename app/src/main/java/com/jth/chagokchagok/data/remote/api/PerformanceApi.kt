@@ -25,4 +25,12 @@ interface PerformanceApi {
     suspend fun getUserPerformances(
         @Path("userId") userId: String
     ): Response<List<PerformanceResponseDto>>
+
+    @GET("/performance/photourls")
+    suspend fun getPhotoUrlsByYearMonth(
+        @Query("userId") userId: String, // 유저 ID
+        @Query("year") year: Int,
+        @Query("month") month: Int
+    ): List<String>  // ← 실제 응답 타입에 따라 바꿔야 함. 예: List<PerformanceResponseDto>
+
 }
