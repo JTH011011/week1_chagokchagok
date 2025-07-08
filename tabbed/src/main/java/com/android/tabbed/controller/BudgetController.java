@@ -15,11 +15,16 @@ public class BudgetController {
     @Autowired
     private BudgetService budgetService;
 
-    @PostMapping
-    public ResponseEntity<Long> createBudget(@RequestBody BudgetRequest request) {
-        Long budgetId = budgetService.createBudget(request);
-        return ResponseEntity.ok(budgetId);
+    @PostMapping("/user/{userId}/month/{yearMonth}")
+    public ResponseEntity<BudgetResponse> createBudget(
+            @PathVariable("userId") String userId,
+            @PathVariable("yearMonth") String yearMonth,
+            @RequestBody BudgetRequest request) {
+        YearMonth month = YearMonth.parse(yearMonth);
+        BudgetResponse budget = budgetService.createBudget(userId, month, request);
+        return ResponseEntity.ok(budget);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<BudgetResponse> getBudget(@PathVariable("id") Long id) {

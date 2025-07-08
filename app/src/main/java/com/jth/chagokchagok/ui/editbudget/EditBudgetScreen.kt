@@ -12,12 +12,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.jth.chagokchagok.data.preferences.UserPreferences
 import java.time.YearMonth
-
 
 @Composable
 fun EditBudgetScreen(
@@ -29,6 +30,25 @@ fun EditBudgetScreen(
 
     val years = (YearMonth.now().year - 5)..(YearMonth.now().year + 1)
     val months = 1..12
+    val context = LocalContext.current
+    val userPreferences = remember { UserPreferences(context) }
+
+    val selectedYear = viewModel.selectedYear.collectAsState().value
+    val selectedMonth = viewModel.selectedMonth.collectAsState().value
+    val currentYearMonth = remember(selectedYear, selectedMonth) {
+        YearMonth.of(selectedYear, selectedMonth)
+    }
+
+    val uiState by viewModel.uiState.collectAsState()
+
+    // ✅ 화면 진입 시 예산 불러오기
+    LaunchedEffect(currentYearMonth) {
+        userPreferences.userIdFlow.collect { userId ->
+            if (userId != null) {
+                viewModel.loadMonthlyBudget(userId, currentYearMonth)
+            }
+        }
+    }
 
     Scaffold(
         containerColor = Color.White,
@@ -38,10 +58,11 @@ fun EditBudgetScreen(
             }
         },
         bottomBar = {
-            val isEnabled = viewModel.budget.collectAsState().value > 0
+            val isEnabled = uiState.budget > 0
             Button(
-                onClick = { /* TODO: backend 저장 후 popBackStack() */
-                    navController.popBackStack()},
+                onClick = {
+                    navController.popBackStack()
+                },
                 enabled = isEnabled,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -82,8 +103,9 @@ fun EditBudgetScreen(
                         modifier = Modifier.weight(1f)
                     )
 
-                    val budgetState = viewModel.budget.collectAsState()
-                    var budgetInput by remember { mutableStateOf(budgetState.value.toString()) }
+                    var budgetInput by remember(uiState.budget) {
+                        mutableStateOf(uiState.budget.toString())
+                    }
 
                     TextField(
                         value = budgetInput,
@@ -105,19 +127,17 @@ fun EditBudgetScreen(
                             focusedTextColor = Color.Black,
                             unfocusedTextColor = Color.Gray
                         ),
-                        modifier = Modifier
-                            .weight(2f)
+                        modifier = Modifier.weight(2f)
                     )
                 }
             }
-
 
             Spacer(Modifier.height(32.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 TextButton(onClick = { yearMenuOpen = true }) {
                     Text(
-                        "${viewModel.selectedYear.collectAsState().value}년",
+                        "${selectedYear}년",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFFFF9800)
@@ -142,7 +162,7 @@ fun EditBudgetScreen(
 
                 TextButton(onClick = { monthMenuOpen = true }) {
                     Text(
-                        "${viewModel.selectedMonth.collectAsState().value}월",
+                        "${selectedMonth}월",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFFFF9800)
@@ -169,9 +189,9 @@ fun EditBudgetScreen(
             Column(modifier = Modifier.fillMaxWidth()) {
                 Text("이번 달 현황", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = Color(0xFF666666))
                 Spacer(Modifier.height(12.dp))
-                BudgetRow("이번 달 예산", viewModel.budget.collectAsState().value)
-                BudgetRow("현재 지출", viewModel.spent.collectAsState().value)
-                BudgetRow("남은 예산", viewModel.remaining)
+                BudgetRow("이번 달 예산", uiState.budget)
+                BudgetRow("현재 지출", uiState.spent)
+                BudgetRow("남은 예산", uiState.remaining)
             }
         }
     }
@@ -185,7 +205,7 @@ fun BudgetTopBar(title: String, onBackClick: () -> Unit) {
             .fillMaxWidth()
             .height(108.dp)
             .statusBarsPadding()
-            .padding(top = 48.dp, start = 16.dp, end = 16.dp),
+            .padding(top = 24.dp, start = 16.dp, end = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(onClick = onBackClick) {

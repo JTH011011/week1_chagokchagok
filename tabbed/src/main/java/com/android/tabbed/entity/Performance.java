@@ -31,17 +31,22 @@ public class Performance {
 
     private Integer price;
 
+    @Lob
+    @Column(name = "photo_path")
+    private String photoPath;
+
     // 기본 생성자
     public Performance() {}
 
     // 생성자
-    public Performance(String name, String genre, String castInfo, LocalDateTime attendingDate, String seat, Integer price) {
+    public Performance(String name, String genre, String castInfo, LocalDateTime attendingDate, String seat, Integer price, String photoPath) {
         this.name = name;
         this.genre = genre;
         this.castInfo = castInfo;
         this.attendingDate = attendingDate;
         this.seat = seat;
         this.price = price;
+        this.photoPath = photoPath;
     }
 
     // Getters and Setters
@@ -68,4 +73,7 @@ public class Performance {
 
     public Integer getPrice() { return price; }
     public void setPrice(Integer price) { this.price = price; }
+
+    public String getPhotoPath() { return photoPath; }
+    public void setPhotoPath(String photoPath) { this.photoPath = photoPath; }
 }

@@ -1,7 +1,6 @@
 package com.android.tabbed.service;
 
 import com.android.tabbed.entity.Performance;
-import com.android.tabbed.dto.PerformanceResponse;
 import com.android.tabbed.entity.Budget;
 import com.android.tabbed.repository.PerformanceRepository;
 import com.android.tabbed.repository.BudgetRepository;
@@ -21,33 +20,39 @@ public class PerformanceServiceImpl implements PerformanceService {
     private BudgetRepository budgetRepository;
 
     @Override
-    public PerformanceResponse createPerformance(Performance performance) {
+    public Performance createPerformance(Performance performance) {
         Performance savedPerformance = performanceRepository.save(performance);
-        String warningMessage = updateBudgetForPerformance(savedPerformance);
-        return new PerformanceResponse(savedPerformance, warningMessage);
+        updateBudgetForPerformance(savedPerformance);
+        return savedPerformance;
     }
 
-    public String updateBudgetForPerformance(Performance performance) {
+    @Override
+    public void updateBudgetForPerformance(Performance performance) {
         String userId = performance.getUserId();
         YearMonth month = YearMonth.from(performance.getAttendingDate());
         Integer price = performance.getPrice();
 
         Optional<Budget> budgetOpt = budgetRepository.findByUserIdAndYearMonth(userId, month);
-        if (budgetOpt.isEmpty() || budgetOpt.get().getBudget() == null || budgetOpt.get().getBudget() == 0) {
-            throw new RuntimeException("øπªÍ¿ª ∏’¿˙ µÓ∑œ«œººø‰.");
-        }
+        if (budgetOpt.isPresent()) {
+            // Í∏∞Ï°¥ ÏòàÏÇ∞Ïù¥ ÏûàÎäî Í≤ΩÏö∞
+            Budget budget = budgetOpt.get();
+            Integer currentSpending = budget.getSpending();
+            Integer newSpending = currentSpending + price;
+            Integer remaining = budget.getBudget() - newSpending;
 
-        Budget budget = budgetOpt.get();
-        Integer newSpending = budget.getSpending() + price;
-        Integer remaining = budget.getBudget() - newSpending;
-        budget.setSpending(newSpending);
-        budget.setRemaining(remaining);
-        budgetRepository.save(budget);
-
-        if (newSpending > budget.getBudget()) {
-            return "∞Ê∞Ì: øπªÍ¿ª √ ∞˙«ﬂΩ¿¥œ¥Ÿ. øπªÍ: " + budget.getBudget() + ", √— ¡ˆ√‚: " + newSpending;
+            budget.setSpending(newSpending);
+            budget.setRemaining(remaining);
+            budgetRepository.save(budget);
+        } else {
+            // ÏÉàÎ°úÏö¥ ÏòàÏÇ∞ ÏÉùÏÑ±
+            Budget budget = new Budget();
+            budget.setUserId(userId);
+            budget.setYearMonth(month);
+            budget.setBudget(0); // Í∏∞Î≥∏ ÏòàÏÇ∞ÏùÄ 0ÏúºÎ°ú ÏÑ§Ï†ï
+            budget.setSpending(price);
+            budget.setRemaining(0 - price);
+            budgetRepository.save(budget);
         }
-        return null;
     }
 
     @Override
@@ -83,5 +88,9 @@ public class PerformanceServiceImpl implements PerformanceService {
     public List<Performance> getPerformancesByUser(String userId) {
         return performanceRepository.findByUserId(userId);
     }
-}
 
+    @Override
+    public List<Performance> getPerformancesByUserAndYearMonth(String userId, String yearMonth) {
+        return performanceRepository.findByUserIdAndYearMonth(userId, yearMonth);
+    }
+}

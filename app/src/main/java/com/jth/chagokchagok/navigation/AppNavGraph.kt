@@ -21,6 +21,7 @@ import com.jth.chagokchagok.ui.home.*
 import com.jth.chagokchagok.ui.mypage.MyPageScreen
 import com.jth.chagokchagok.ui.editbudget.EditBudgetScreen
 import com.jth.chagokchagok.ui.login.LoginUiState
+import java.time.YearMonth
 
 @Composable
 fun AppNavGraph(
@@ -81,8 +82,9 @@ fun AppNavGraph(
             val context = LocalContext.current
             val userPreferences = UserPreferences(context)
             val userId by userPreferences.userIdFlow.collectAsState(initial = "")
+            val id = userId ?: return@composable
             planBudgetScreen(
-                userId = userId!!,
+                userId = id,
                 onPreviousClick = { navController.popBackStack() },
                 onCompleteClick = { budget ->
                     navController.navigate(Screen.MainShell.create()) {
@@ -97,29 +99,25 @@ fun AppNavGraph(
             MainScreen(outerNavController = navController)
         }
 
-        composable(
-            route = "home?budget={budget}&spent={spent}",
-            arguments = listOf(
-                navArgument("budget") { type = NavType.IntType },
-                navArgument("spent") { type = NavType.IntType } // 추가됨
-            )
-        ) { entry ->
-            val budget = entry.arguments?.getInt("budget") ?: 0
-            val spent = entry.arguments?.getInt("spent") ?: 0 // 추가됨
+        composable(BottomNavItem.Home.route) {
+            val context = LocalContext.current
+            val userPreferences = UserPreferences(context)
+            val userId by userPreferences.userIdFlow.collectAsState(initial = "")
 
-            val vm: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+            val viewModel: HomeViewModel = androidx.lifecycle.viewmodel.compose.viewModel()
+            val currentYearMonth = YearMonth.now() // 예: "2025-07"
 
-            LaunchedEffect(Unit) {
-                if (budget > 0 && vm.uiState.value.budget == 0) {
-                    vm.loadInitialData(budget, spent)
-                }
+            LaunchedEffect(userId) {
+                    viewModel.loadMonthlyBudget(userId.orEmpty(), currentYearMonth)
             }
 
             HomeScreen(
                 navController = navController,
-                viewModel = vm,
+                userId = userId.orEmpty(),
+                viewModel = viewModel
             )
         }
+
 
         composable(Screen.AddView.route) { AddViewScreen(navController) }
         composable(Screen.EditBudget.route) { EditBudgetScreen(navController) }

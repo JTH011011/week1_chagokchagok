@@ -1,50 +1,69 @@
-// 📄 com.jth.chagokchagok.ui.editbudget.EditBudgetViewModel.kt
 package com.jth.chagokchagok.ui.editbudget
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.jth.chagokchagok.data.remote.RetrofitProvider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import java.time.YearMonth
 
-/**
- * 예산 설정 화면 전용 ViewModel
- * - 선택된 연도와 월에 따라 월별 예산 저장/불러오기 지원
- * - 지출 금액과 남은 예산 계산 포함
- */
+// UI 상태를 담는 데이터 클래스
+data class EditBudgetUiState(
+    val budget: Int = 0,
+    val spent: Int = 0
+) {
+    val remaining: Int
+        get() = (budget - spent).coerceAtLeast(0)
+}
+
 class EditBudgetViewModel : ViewModel() {
+
+    private val _uiState = MutableStateFlow(EditBudgetUiState())
+    val uiState: StateFlow<EditBudgetUiState> = _uiState
+
     private val _selectedYear = MutableStateFlow(YearMonth.now().year)
     private val _selectedMonth = MutableStateFlow(YearMonth.now().monthValue)
 
-    private val _budget = MutableStateFlow(0)
-    private val _spent = MutableStateFlow(100_000) // 예: 기본 지출
+    val selectedYear: StateFlow<Int> = _selectedYear
+    val selectedMonth: StateFlow<Int> = _selectedMonth
 
-    // 월별 예산 저장용 (메모리 캐시)
-    private val _monthlyBudgets = mutableMapOf<YearMonth, Int>()
-
-    val selectedYear: StateFlow<Int> get() = _selectedYear
-    val selectedMonth: StateFlow<Int> get() = _selectedMonth
-    val budget: StateFlow<Int> get() = _budget
-    val spent: StateFlow<Int> get() = _spent
-    val remaining: Int get() = (_budget.value - _spent.value).coerceAtLeast(0)
+    val budget: StateFlow<Int> get() = MutableStateFlow(_uiState.value.budget)
+    val spent: StateFlow<Int> get() = MutableStateFlow(_uiState.value.spent)
+    val remaining: Int get() = _uiState.value.remaining
 
     fun updateYear(year: Int) {
         _selectedYear.value = year
-        loadBudgetForSelectedMonth()
+        // budget은 외부에서 새로 불러줘야 함
     }
 
     fun updateMonth(month: Int) {
         _selectedMonth.value = month
-        loadBudgetForSelectedMonth()
+        // budget은 외부에서 새로 불러줘야 함
     }
 
-    fun updateBudget(budget: Int) {
-        val key = YearMonth.of(_selectedYear.value, _selectedMonth.value)
-        _monthlyBudgets[key] = budget
-        _budget.value = budget
+    fun loadMonthlyBudget(userId: String, yearMonth: YearMonth) {
+        viewModelScope.launch {
+            try {
+                val response = RetrofitProvider.budgetApi.getBudget(
+                    userId = userId,
+                    yearMonth = yearMonth.toString()
+                )
+
+                response.body()?.let { data ->
+                    _uiState.value = EditBudgetUiState(
+                        budget = data.budget,
+                        spent = data.spending
+                    )
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                println("\uD83D\uDCA5 EditBudget 예산 불러오기 실패: ${e.message}")
+            }
+        }
     }
 
-    private fun loadBudgetForSelectedMonth() {
-        val key = YearMonth.of(_selectedYear.value, _selectedMonth.value)
-        _budget.value = _monthlyBudgets[key] ?: 0
+    fun updateBudget(newBudget: Int) {
+        _uiState.value = _uiState.value.copy(budget = newBudget)
     }
 }

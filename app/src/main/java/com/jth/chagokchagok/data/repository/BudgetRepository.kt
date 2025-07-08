@@ -1,4 +1,3 @@
-// 📄 com.jth.chagokchagok.data.repository.BudgetRepository.kt
 package com.jth.chagokchagok.data.repository
 
 import com.jth.chagokchagok.data.remote.RetrofitProvider
@@ -10,13 +9,34 @@ class BudgetRepository {
 
     private val api = RetrofitProvider.budgetApi
 
-    suspend fun updateBudget(userId: String, yearMonth: String, request: BudgetRequest): Result<BudgetResponse> {
+    // 📌 예산 생성
+    suspend fun createBudget(
+        userId: String,
+        yearMonth: String,
+        request: BudgetRequest
+    ): Result<BudgetResponse> {
         return try {
-            val response = api.updateBudget(userId, yearMonth, request)
+            val response = api.createBudget(userId, yearMonth, request)
             if (response.isSuccessful && response.body() != null) {
                 Result.success(response.body()!!)
             } else {
-                val error = response.errorBody()?.string()
+                Result.failure(HttpException(response))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    // 📌 예산 조회
+    suspend fun getBudget(
+        userId: String,
+        yearMonth: String
+    ): Result<BudgetResponse> {
+        return try {
+            val response = api.getBudget(userId, yearMonth)
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!)
+            } else {
                 Result.failure(HttpException(response))
             }
         } catch (e: Exception) {
@@ -24,3 +44,4 @@ class BudgetRepository {
         }
     }
 }
+

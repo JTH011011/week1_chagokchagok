@@ -42,6 +42,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.YearMonth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @Composable
 fun planBudgetScreen(
@@ -60,10 +62,10 @@ fun planBudgetScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 24.dp)
-            .background(Color.White),
+            .background(Color.White), // 스크롤 가능하도록 설정
         verticalArrangement = Arrangement.Top
     ) {
-        Spacer(modifier = Modifier.height(108.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
         Text(
             text = "한 달 예산 파악",
@@ -73,7 +75,7 @@ fun planBudgetScreen(
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
-        Spacer(modifier = Modifier.height(72.dp))
+        Spacer(modifier = Modifier.height(48.dp))
 
         Text("Q.", color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)
 
@@ -85,7 +87,7 @@ fun planBudgetScreen(
             lineHeight = 28.sp
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(28.dp))
 
         Text("A.", color = Color(0xFFFF9800), fontWeight = FontWeight.Bold)
 
@@ -195,7 +197,7 @@ fun planBudgetScreen(
 
                         CoroutineScope(Dispatchers.IO).launch {
                             try {
-                                RetrofitProvider.budgetApi.updateBudget(
+                                RetrofitProvider.budgetApi.createBudget(
                                     userId = userId,
                                     yearMonth = now.toString(),
                                     request = request

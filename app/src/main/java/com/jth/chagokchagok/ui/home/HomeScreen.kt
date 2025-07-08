@@ -25,9 +25,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.PhotoAlbum
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -35,11 +32,10 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,7 +47,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -69,12 +64,22 @@ import com.kizitonwose.calendar.core.DayPosition
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 
 @Composable
 fun HomeScreen(
     navController: NavController,
+    userId: String,
     viewModel: HomeViewModel = viewModel(),
 ) {
+    LaunchedEffect(userId) {
+        if (userId.isNotBlank()) {
+            val ym = YearMonth.now()
+            viewModel.loadMonthlyBudget(userId, ym)
+        }
+    }
     val uiState by viewModel.uiState.collectAsState()
     val selectedDate = remember { mutableStateOf(LocalDate.now()) }
     val coroutineScope = rememberCoroutineScope()
@@ -119,10 +124,12 @@ fun HomeScreen(
         }
     ) { innerPadding ->
 
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
+                .verticalScroll(rememberScrollState()),
         ) {
             Spacer(Modifier.height(16.dp))
 
@@ -231,7 +238,7 @@ fun HomeScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 8.dp)
-                    .weight(1f)
+                    .height(300.dp)
             )
         }
     }

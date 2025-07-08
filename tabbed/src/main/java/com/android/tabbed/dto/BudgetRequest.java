@@ -6,7 +6,7 @@ public class BudgetRequest {
     private String userId;
     private YearMonth yearMonth;
     private Integer budget;
-    private Integer spending = 0; // ±âº»°ªÀ¸·Î 0 ¼³Á¤
+    private Integer spending = 0; // ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½
 
     public String getUserId() {
         return userId;

@@ -30,6 +30,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jth.chagokchagok.R
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 @Composable
 fun PlanStartScreen(
@@ -40,6 +42,7 @@ fun PlanStartScreen(
             .fillMaxSize()
             .background(Color.White)
             .padding(horizontal = 32.dp)
+            .verticalScroll(rememberScrollState()), // 스크롤 가능하도록 설정
     ) {
         // 오른쪽 상단 로고 (살짝 더 내려서 겹침 방지)
         Image(
@@ -48,14 +51,14 @@ fun PlanStartScreen(
             modifier = Modifier
                 .size(width = 62.dp, height = 56.dp)
                 .align(Alignment.TopEnd)
-                .offset(x = (-15).dp, y = 240.dp) // ← 약간만 조정해서 글자와 어색하지 않게 분리
+                .offset(x = (-15).dp, y = 120.dp) // ← 약간만 조정해서 글자와 어색하지 않게 분리
         )
 
         // 텍스트 블럭
         Column(
             modifier = Modifier
                 .align(Alignment.TopStart)
-                .padding(top = 288.dp), // ← 로고보다 아래로 조정
+                .padding(top = 160.dp), // ← 로고보다 아래로 조정
             verticalArrangement = Arrangement.Top
         ) {
             Text(

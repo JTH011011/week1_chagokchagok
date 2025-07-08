@@ -1,26 +1,37 @@
 package com.jth.chagokchagok.data.remote
 
+import com.jth.chagokchagok.data.remote.api.BudgetApi
 import com.jth.chagokchagok.data.remote.api.UserApi
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.jth.chagokchagok.data.remote.api.BudgetApi
 
 object RetrofitProvider {
-    private const val BASE_URL = "http://localhost:8080" // 에뮬레이터 → 로컬 서버
 
-    val userApi: UserApi by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(UserApi::class.java)
+    /** 에뮬레이터에서 PC 로컬서버에 접속하려면 ‘localhost’ 대신 10.0.2.2 사용 */
+    private const val BASE_URL =  "http://143.248.216.95:8080/"
+
+    /** ── ① OkHttp 로깅 인터셉터 ───────────────────────────── */
+    private val logger = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY   //   BODY = URL · Header · JSON 모두 표시
     }
 
-    val budgetApi: BudgetApi by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(BudgetApi::class.java)
-    }
+    private val client: OkHttpClient = OkHttpClient
+        .Builder()
+        .addInterceptor(logger)                    // ② 여기에 붙이기
+        .build()
+
+    /** ── ③ Retrofit 한 번만 만들고 재사용 ───────────────── */
+    private val retrofit: Retrofit = Retrofit
+        .Builder()
+        .baseUrl(BASE_URL)
+        .client(client)                            // ④ 로깅 클라이언트 주입
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    /** ── ④ API 인스턴스 ─────────────────────────────────── */
+    val userApi: UserApi   by lazy { retrofit.create(UserApi::class.java) }
+    val budgetApi: BudgetApi by lazy { retrofit.create(BudgetApi::class.java) }
 }
+

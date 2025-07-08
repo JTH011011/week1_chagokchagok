@@ -20,23 +20,32 @@ public class BudgetServiceImpl implements BudgetService {
     private BudgetRepository budgetRepository;
 
     @Override
-    public Long createBudget(BudgetRequest request) {
+    public BudgetResponse createBudget(String userId, YearMonth month,BudgetRequest request) {
         if (request == null) {
             throw new IllegalArgumentException("Budget request cannot be null");
         }
 
-        if (request.getUserId() == null || request.getYearMonth() == null || request.getBudget() == null) {
+        if (userId == null || month == null|| request.getBudget() == null) {
             throw new IllegalArgumentException("userId, yearMonth, and budget are required fields");
         }
 
         Budget budget = new Budget();
-        budget.setUserId(String.valueOf(request.getUserId()));
-        budget.setYearMonth(request.getYearMonth());
+        budget.setUserId(userId);
+        budget.setYearMonth(month);
         budget.setBudget(request.getBudget());
-        budget.setSpending(0); // 최초 생성 시 spending은 0으로 설정
-        budget.setRemaining(request.getBudget() != null ? request.getBudget() : 0); // remaining은 budget과 동일하게 설정
+        budget.setSpending(0);
+        budget.setRemaining(request.getBudget());
+        Budget savedBudget = budgetRepository.save(budget);
 
-        return budgetRepository.save(budget).getId();
+        BudgetResponse response = new BudgetResponse();
+        response.setId(savedBudget.getId());
+        response.setUserId(savedBudget.getUserId());
+        response.setYearMonth(savedBudget.getYearMonth());
+        response.setBudget(savedBudget.getBudget());
+        response.setSpending(savedBudget.getSpending());
+        response.setRemaining(savedBudget.getRemaining());
+
+        return response;
     }
 
     @Override

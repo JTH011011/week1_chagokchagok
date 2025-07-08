@@ -23,6 +23,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
 import com.jth.chagokchagok.util.isValidId
 import com.jth.chagokchagok.util.isValidPassword
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 
 @Composable
 fun LoginScreen(
@@ -39,7 +42,8 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(horizontal = 32.dp, vertical = 144.dp),
+            .padding(horizontal = 32.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Top
     ) {
         Text(

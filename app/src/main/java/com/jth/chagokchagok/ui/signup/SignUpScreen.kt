@@ -29,6 +29,8 @@ import androidx.compose.runtime.LaunchedEffect
 import com.jth.chagokchagok.data.preferences.UserPreferences
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 
 
 @Composable
@@ -74,7 +76,9 @@ fun SignUpScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(horizontal = 32.dp, vertical = 108.dp),
+            .padding(horizontal = 32.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState()),
+
         verticalArrangement = Arrangement.Top
     ) {
         IconButton(

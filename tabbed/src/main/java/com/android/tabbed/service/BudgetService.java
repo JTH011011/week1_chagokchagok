@@ -6,7 +6,7 @@ import java.time.YearMonth;
 import java.util.List;
 
 public interface BudgetService {
-    Long createBudget(BudgetRequest request);
+    BudgetResponse createBudget(String userId, YearMonth yearMonth, BudgetRequest request);
     BudgetResponse getBudget(Long id);
     List<BudgetResponse> getBudgetsByUser(String userId);
     BudgetResponse getBudgetByMonth(String userId, YearMonth yearMonth);

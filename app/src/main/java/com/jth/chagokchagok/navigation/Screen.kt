@@ -34,9 +34,7 @@ sealed class BottomNavItem(
     val icon: ImageVector,
     val label: String
 ) {
-    object Home : BottomNavItem("home", Icons.Default.Home, "홈") {
-        fun create(budget: Int) = "home?budget=$budget"
-    }
+    object Home : BottomNavItem("home", Icons.Default.Home, "홈")
 
     object Album : BottomNavItem("album", Icons.Default.PhotoAlbum, "사진첩")
     object MyPage : BottomNavItem("mypage", Icons.Default.Person, "마이페이지")
