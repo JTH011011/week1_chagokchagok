@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitProvider {
 
     /** 에뮬레이터에서 PC 로컬서버에 접속하려면 ‘localhost’ 대신 10.0.2.2 사용 */
-    private const val BASE_URL = "http://143.248.216.95:8080/"
+    private const val BASE_URL = "http://143.248.181.90:8080/"
 
     /** ── ① OkHttp 로깅 인터셉터 ───────────────────────────── */
     private val logger = HttpLoggingInterceptor().apply {

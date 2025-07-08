@@ -8,7 +8,7 @@ object PerformanceApiProvider {
 
     val api: PerformanceApi by lazy {
         Retrofit.Builder()
-            .baseUrl("http://143.248.181.95:8080/") // ← 실제 서버 주소로 바꾸기
+            .baseUrl("http://143.248.181.90:8080/") // ← 실제 서버 주소로 바꾸기
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(PerformanceApi::class.java)

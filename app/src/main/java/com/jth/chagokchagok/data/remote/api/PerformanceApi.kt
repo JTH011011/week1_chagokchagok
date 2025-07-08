@@ -33,4 +33,10 @@ interface PerformanceApi {
         @Query("month") month: Int
     ): List<String>  // ← 실제 응답 타입에 따라 바꿔야 함. 예: List<PerformanceResponseDto>
 
+    @GET("performance/user/{userId}/month/{yearMonth}/photourls")
+    suspend fun getPerformancesWithPhotoUrls(
+        @Path("userId") userId: String,
+        @Path("yearMonth") yearMonth: String
+    ): Response<List<PerformanceResponseDto>>
+
 }

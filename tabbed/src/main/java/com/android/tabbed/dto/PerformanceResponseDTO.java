@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PerformanceResponseDTO {
     private Long performanceId;
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime attendingDate;
     private String castInfo;
     private String genre;

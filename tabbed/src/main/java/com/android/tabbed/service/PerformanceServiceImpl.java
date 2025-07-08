@@ -10,10 +10,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Service
 @Transactional
 public class PerformanceServiceImpl implements PerformanceService {
+
+    @Autowired
+    private PerformanceRepository performanceRepository;
+
+    @Autowired
+    private BudgetRepository budgetRepository;
+
     @Override
     public Performance getPerformanceByPhotoUrl(String photoUrl) {
         List<Performance> list = performanceRepository.findAll();
@@ -35,10 +43,6 @@ public class PerformanceServiceImpl implements PerformanceService {
         List<Performance> list = performanceRepository.findByUserId(userId);
         return list.stream().map(Performance::getPhotoUrl).filter(url -> url != null && !url.isEmpty()).toList();
     }
-    @Autowired
-    private PerformanceRepository performanceRepository;
-    @Autowired
-    private BudgetRepository budgetRepository;
 
     @Override
     public Performance createPerformance(Performance performance) {
@@ -112,6 +116,13 @@ public class PerformanceServiceImpl implements PerformanceService {
 
     @Override
     public List<Performance> getPerformancesByUserAndYearMonth(String userId, String yearMonth) {
-        return performanceRepository.findByUserIdAndYearMonth(userId, yearMonth);
+        int year = Integer.parseInt(yearMonth.substring(0, 4));
+        int month = Integer.parseInt(yearMonth.substring(5, 7));
+
+        LocalDateTime startDate = LocalDateTime.of(year, month, 1, 0, 0);
+        LocalDateTime endDate = startDate.withDayOfMonth(startDate.toLocalDate().lengthOfMonth())
+                .withHour(23).withMinute(59).withSecond(59);
+
+        return performanceRepository.findByUserIdAndAttendingDateBetween(userId, startDate, endDate);
     }
 }

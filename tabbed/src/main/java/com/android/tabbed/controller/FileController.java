@@ -20,6 +20,7 @@ public class FileController {
 
     @PostMapping("/upload")
     public ResponseEntity<?> uploadImage(@RequestParam("image") MultipartFile file) {
+        System.out.println("[FileController] uploadImage 호출됨!");
         try {
             // 파일 이름 생성
 
@@ -37,7 +38,7 @@ public class FileController {
             file.transferTo(dest);
 
             // URL 구성
-            String fileUrl = "http://143.248.216.95:8080/uploads/" + fileName;
+            String fileUrl = "http://143.248.181.90:8080/uploads/" + fileName;
             return ResponseEntity.ok().body(new ImageUrlResponse(fileUrl));
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,5 +55,10 @@ public class FileController {
             this.url = url;
         }
         public String getUrl() { return url; }
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "FileController is working!";
     }
 }

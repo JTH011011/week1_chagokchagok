@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
-                .addResourceHandler("/uploads/**")  // 요청 URL
-                .addResourceLocations("file:/Users/taeheejeong/Desktop/chagokchagok/tabbed/uploads/"); // 실제 물리 경로
+                .addResourceHandler("/uploads/**")
+                .addResourceLocations("file:/C:/Users/julk0/AndroidStudioProjects/week1_test2/tabbed/uploads/");
     }
 }

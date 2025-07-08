@@ -59,6 +59,10 @@ fun AlbumScreen(navController: NavController, viewModel: AlbumViewModel = viewMo
 
     val photoUrls by viewModel.photoUrls.collectAsState()
 
+    LaunchedEffect(photoUrls) {
+        println("AlbumScreen photoUrls: $photoUrls")
+    }
+
     // 선택 변경 시 사진 불러오기
     LaunchedEffect(userId, selectedYear, selectedMonth) {
         if (userId != null) {

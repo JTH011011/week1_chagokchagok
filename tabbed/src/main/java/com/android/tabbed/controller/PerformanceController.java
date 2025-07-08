@@ -78,6 +78,18 @@ public class PerformanceController {
         return ResponseEntity.ok(dtos);
     }
 
+    @GetMapping("/user/{userId}/month/{yearMonth}/photourls")
+    public ResponseEntity<List<PerformanceResponseDTO>> getPerformancesByUserAndMonthAndUrl(
+            @PathVariable("userId") String userId,
+            @PathVariable("yearMonth") String yearMonth) {
+        List<Performance> performances = performanceService.getPerformancesByUserAndYearMonth(userId, yearMonth);
+        List<PerformanceResponseDTO> dtos = performances.stream()
+                .filter(p -> p.getPhotoUrl() != null && !p.getPhotoUrl().isBlank())
+                .map(PerformanceResponseDTO::fromEntity)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
+
     @GetMapping("/user/{userId}/month/{yearMonth}")
     public ResponseEntity<List<PerformanceResponseDTO>> getPerformancesByUserAndMonth(
             @PathVariable("userId") String userId,

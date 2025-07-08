@@ -163,8 +163,8 @@ fun AddViewScreen(
             Button(
                 onClick = {
                     viewModel.submit(userId, context) {
-                        navController.navigate(Screen.MainShell.route) {
-                            popUpTo(Screen.AddView.route) { inclusive = true } // 또는 적절한 상위 경로
+                        navController.navigate(BottomNavItem.Home.route) {
+                            popUpTo(Screen.AddView.route) { inclusive = true } // AddView 화면 삭제
                             launchSingleTop = true
                         }
                     }

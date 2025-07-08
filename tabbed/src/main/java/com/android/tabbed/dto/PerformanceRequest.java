@@ -1,6 +1,7 @@
 package com.android.tabbed.dto;
 
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PerformanceRequest {
     private String userId;
@@ -8,6 +9,7 @@ public class PerformanceRequest {
     private String genre;
     private String cast;  // Request에서 사용하는 필드명
     private String castInfo; // Entity에 매핑할 필드명
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime attendingDate;
     private String seat;
     private int price;
