@@ -11,7 +11,6 @@ import androidx.navigation.compose.*
 import com.jth.chagokchagok.data.preferences.UserPreferences
 import com.jth.chagokchagok.ui.MainScreen
 import com.jth.chagokchagok.ui.addview.AddViewScreen
-import com.jth.chagokchagok.ui.album.AlbumScreen
 import com.jth.chagokchagok.ui.login.LoginScreen
 import com.jth.chagokchagok.ui.login.LoginViewModel
 import com.jth.chagokchagok.ui.planbudget.planBudgetScreen

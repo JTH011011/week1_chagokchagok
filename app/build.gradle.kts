@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -79,6 +81,13 @@ dependencies {
     implementation("com.h2database:h2:2.1.214")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
+    // 코루틴 (비동기 작업용)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
+// Coil (이미지 불러오기)
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 }
