@@ -7,11 +7,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofitProvider {
 
     /** 에뮬레이터에서 PC 로컬서버에 접속하려면 ‘localhost’ 대신 10.0.2.2 사용 */
-    private const val BASE_URL = "http://143.248.181.90:8080/"
+    private const val BASE_URL = "http://143.248.216.95:8080/"
 
     /** ── ① OkHttp 로깅 인터셉터 ───────────────────────────── */
     private val logger = HttpLoggingInterceptor().apply {
@@ -20,6 +21,9 @@ object RetrofitProvider {
 
     private val client: OkHttpClient = OkHttpClient
         .Builder()
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(15, TimeUnit.SECONDS)
+        .writeTimeout(15, TimeUnit.SECONDS)
         .addInterceptor(logger)                    // ② 여기에 붙이기
         .build()
 

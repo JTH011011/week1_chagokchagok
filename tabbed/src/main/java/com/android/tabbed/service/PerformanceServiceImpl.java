@@ -11,6 +11,7 @@ import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Service
 @Transactional
@@ -124,5 +125,13 @@ public class PerformanceServiceImpl implements PerformanceService {
                 .withHour(23).withMinute(59).withSecond(59);
 
         return performanceRepository.findByUserIdAndAttendingDateBetween(userId, startDate, endDate);
+    }
+
+
+    @Override
+    public List<Performance> getPerformancesByUserAndDate(String userId, LocalDate date) {
+        LocalDateTime startOfDay = date.atStartOfDay(); // 00:00:00
+        LocalDateTime endOfDay = date.atTime(23, 59, 59); // 23:59:59
+        return performanceRepository.findByUserIdAndAttendingDateBetween(userId, startOfDay, endOfDay);
     }
 }

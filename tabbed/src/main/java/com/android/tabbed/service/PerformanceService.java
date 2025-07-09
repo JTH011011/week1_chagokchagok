@@ -2,6 +2,7 @@ package com.android.tabbed.service;
 
 import com.android.tabbed.entity.Performance;
 import java.util.List;
+import java.time.LocalDate;
 
 public interface PerformanceService {
     Performance getPerformanceByPhotoUrl(String photoUrl);
@@ -15,4 +16,6 @@ public interface PerformanceService {
     void deletePerformance(Long id);
     List<Performance> getPerformancesByUser(String userId);
     List<Performance> getPerformancesByUserAndYearMonth(String userId, String yearMonth);
+
+    List<Performance> getPerformancesByUserAndDate(String userId, LocalDate date);
 }

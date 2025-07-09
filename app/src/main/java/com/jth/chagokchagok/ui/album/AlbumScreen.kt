@@ -71,7 +71,8 @@ fun AlbumScreen(navController: NavController, viewModel: AlbumViewModel = viewMo
     }
 
     Scaffold(
-        topBar = { AlbumTopBar() }
+        topBar = { AlbumTopBar() },
+        containerColor = Color.White,
     ) { innerPadding ->
         Column(
             modifier = Modifier

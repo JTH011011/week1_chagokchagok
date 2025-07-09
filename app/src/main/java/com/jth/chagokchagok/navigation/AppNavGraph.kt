@@ -22,6 +22,14 @@ import com.jth.chagokchagok.ui.mypage.MyPageScreen
 import com.jth.chagokchagok.ui.editbudget.EditBudgetScreen
 import com.jth.chagokchagok.ui.login.LoginUiState
 import java.time.YearMonth
+import java.time.LocalDate
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import com.jth.chagokchagok.data.repository.PerformanceRepository
+import com.jth.chagokchagok.ui.album.PerformanceApiProvider
+import com.jth.chagokchagok.ui.detail.DetailScreen
+import com.jth.chagokchagok.ui.detail.DetailViewModel
+import com.jth.chagokchagok.ui.detail.DetailViewModelFactory
 
 @Composable
 fun AppNavGraph(
@@ -97,6 +105,32 @@ fun AppNavGraph(
 
         composable(Screen.MainShell.route) {
             MainScreen(outerNavController = navController)
+        }
+
+        composable(
+            route = "detail/{userId}/{date}",   // date는 yyyy-MM-dd 형태의 문자열로 전달 예정
+            arguments = listOf(
+                navArgument("userId") { type = NavType.StringType },
+                navArgument("date") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            val userId = backStackEntry.arguments?.getString("userId") ?: ""
+            val dateString = backStackEntry.arguments?.getString("date") ?: LocalDate.now().toString()
+            val date = LocalDate.parse(dateString)
+
+            val repository = remember { PerformanceRepository(PerformanceApiProvider.api) }
+            val factory = remember { DetailViewModelFactory(repository) }
+            val detailViewModel: DetailViewModel = androidx.lifecycle.viewmodel.compose.viewModel(factory = factory)
+
+
+            DetailScreen(
+                navController = navController,
+                userId = userId,
+                date = date,
+                viewModel = detailViewModel
+            )
         }
 
         composable(BottomNavItem.Home.route) {

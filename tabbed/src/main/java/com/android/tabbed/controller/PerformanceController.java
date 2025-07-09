@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/performance")
@@ -89,6 +91,18 @@ public class PerformanceController {
                 .collect(Collectors.toList());
         return ResponseEntity.ok(dtos);
     }
+
+    @GetMapping("/user/{userId}/date/{date}")
+    public ResponseEntity<List<PerformanceResponseDTO>> getPerformancesByUserAndDate(
+            @PathVariable("userId") String userId,
+            @PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        List<Performance> performances = performanceService.getPerformancesByUserAndDate(userId, date);
+        List<PerformanceResponseDTO> dtos = performances.stream()
+                .map(PerformanceResponseDTO::fromEntity)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
+    }
+
 
     @GetMapping("/user/{userId}/month/{yearMonth}")
     public ResponseEntity<List<PerformanceResponseDTO>> getPerformancesByUserAndMonth(

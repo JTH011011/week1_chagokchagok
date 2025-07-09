@@ -69,12 +69,16 @@ fun MainScreen(
             composable(BottomNavItem.Home.route) {
                 val context = LocalContext.current
                 val prefs = UserPreferences(context)
-                val userId by prefs.userIdFlow.collectAsState(initial = "")
+                val userIdNullable by prefs.userIdFlow.collectAsState(initial = null)
 
-                HomeScreen(
-                    navController = outerNavController,
-                    userId = userId!!,
-                )
+                val userId = userIdNullable ?: ""
+
+                if (userId.isNotBlank()) {
+                    HomeScreen(
+                        navController = outerNavController,
+                        userId = userId,
+                    )
+                }
 
             }
             composable(BottomNavItem.Album.route) {

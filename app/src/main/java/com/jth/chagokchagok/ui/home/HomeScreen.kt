@@ -90,13 +90,7 @@ fun HomeScreen(
         firstVisibleMonth = YearMonth.now()
     )
 
-    val activityDates = listOf(
-        LocalDate.of(2025, 7, 2),
-        LocalDate.of(2025, 7, 5),
-        LocalDate.of(2025, 7, 10),
-        LocalDate.of(2025, 7, 1),
-        LocalDate.of(2025, 7, 7)
-    )
+    val activityDates by viewModel.activityDates.collectAsState()
 
     val daysOfWeek = listOf("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
 
@@ -107,6 +101,7 @@ fun HomeScreen(
     Scaffold(
         topBar = { HomeTopBar() },
         contentWindowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
+        containerColor = Color.White,
         floatingActionButton = {
             ExtendedFloatingActionButton(
                 icon = { Icon(Icons.Default.Add, contentDescription = "Add")},
@@ -199,7 +194,11 @@ fun HomeScreen(
                             .aspectRatio(1f)
                             .padding(2.dp)
                             .border(0.5.dp, Color.LightGray)
-                            .clickable { selectedDate.value = dayState.date }
+                            .clickable {
+                                selectedDate.value = dayState.date
+                                // 날짜 선택 시 DetailScreen으로 네비게이션
+                                navController.navigate("detail/$userId/${dayState.date}")
+                            }
                     ) {
                         if (isSelected) {
                             Box(

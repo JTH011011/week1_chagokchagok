@@ -38,7 +38,7 @@ public class FileController {
             file.transferTo(dest);
 
             // URL 구성
-            String fileUrl = "http://143.248.181.90:8080/uploads/" + fileName;
+            String fileUrl = "http://143.248.216.95:8080/uploads/" + fileName;
             return ResponseEntity.ok().body(new ImageUrlResponse(fileUrl));
         } catch (IOException e) {
             e.printStackTrace();
