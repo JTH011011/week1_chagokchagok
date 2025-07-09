@@ -46,7 +46,7 @@
 
 </aside>
 
-![로고이미지.png](attachment:43df2916-0f36-479a-91c6-e627f0ec1aff:로고이미지.png)
+
 
 ## 문화생활도 하나의 자산!
 
@@ -77,6 +77,9 @@
 
 </aside>
 
+<img width="237" alt="image" src="https://github.com/user-attachments/assets/82bb9d72-40e0-4825-88eb-9b10a2ee22c0" />
+
+
 ### **“문화생활도 단순 지출이 아니라,**
 
 ### 쌓이는 자산이 될 수 있을까?”
@@ -105,25 +108,20 @@
 
  → 회원가입 시 해당 월의 예산 설정으로 시작
 
-![첫화면.jpg](attachment:8c54abda-189b-40e2-8858-efff8edec105:첫화면.jpg)
-
-![예산초기.jpg](attachment:4eec682d-138b-4efb-ae0f-79a4ff85c4e7:예산초기.jpg)
-
-![홈화면 최종.jpg](attachment:c8554f49-2a98-457b-a2c4-0a3317636a0a:홈화면_최종.jpg)
-
-![홈화면 이거.jpg](attachment:4f952205-9c4b-4004-bf11-c959fc88fb81:홈화면_이거.jpg)
-
-![날짜별관람기록.jpg](attachment:9c80a52d-2d79-4e88-89eb-9c11368d970c:날짜별관람기록.jpg)
+<img width="474" alt="image" src="https://github.com/user-attachments/assets/fecd5dfb-5040-446b-8676-5162c8dd633b" />
 
 ### **예산과 기록을 한 눈에 (탭1)**
 
 *매달 문화생활을 정해진 예산 안에서 즐기자!*
+<img width="247" alt="image" src="https://github.com/user-attachments/assets/1cad9a3a-29aa-42d8-ae11-d0d34d2bb7bd" />
 
 - **월 예산 설정 + 사용률 시각화**
 
    → 설정 예산과 관람 횟수 확인 가능
 
    → 진행바를 통해 예산 사용률 표시
+
+<img width="249" alt="image" src="https://github.com/user-attachments/assets/55a4be02-1ff9-4de3-9667-a57d737baa31" />
 
 - **캘린더로 월간 문화생활을 한 번에 확인**
 
@@ -132,8 +130,10 @@
   → 스와이프 or 화살표로 월 이동 가능
 
  → 날짜 터치 시 해당 일의 관람 기록 리스트 출력
+<img width="269" alt="image" src="https://github.com/user-attachments/assets/50249808-7222-49c1-843e-4963fe894cb5" />
 
 ### **앨범식 사진 정리 (탭2)**
+<img width="282" alt="image" src="https://github.com/user-attachments/assets/a5320fbd-489a-41c4-8f78-6affcff1a94d" />
 
 - **희망하는 년, 월의 사진 모아보기**
 
@@ -141,19 +141,17 @@
 
   → 1줄 3장 앨범 방식으로 시각적 회고 가능
 
-![사진첩.jpg](attachment:c81ad55f-a18a-4ff4-a2d4-610388ee9636:사진첩.jpg)
 
-![마이페이지.jpg](attachment:ddc62904-4764-4f84-8166-d761333b097e:마이페이지.jpg)
-
-![예산 수정.jpg](attachment:9dff752f-e806-4ae1-9344-c46e2cb9af5e:예산_수정.jpg)
 
 ### **마이페이지 (탭3)**
+<img width="233" alt="image" src="https://github.com/user-attachments/assets/3673b4a9-6777-4766-8e72-020a0fe22ada" />
 
 - **내 계정 정보 확인**
 
  → username 표시 
 
 - **최근 관람 기록 리스트 제공**
+<img width="252" alt="image" src="https://github.com/user-attachments/assets/c59c2911-c331-44c2-bd06-c3841a58ad36" />
 
 - **예산 설정/수정 가능**
 
