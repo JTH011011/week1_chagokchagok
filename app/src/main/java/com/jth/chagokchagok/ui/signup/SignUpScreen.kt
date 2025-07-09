@@ -23,13 +23,50 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
+import androidx.compose.ui.platform.LocalContext
+import android.widget.Toast
+import androidx.compose.runtime.LaunchedEffect
+import com.jth.chagokchagok.data.preferences.UserPreferences
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 
 @Composable
 fun SignUpScreen(
     onSignUpComplete: () -> Unit,
     onBackClick: () -> Unit,
-    viewModel: SignUpViewModel = viewModel()
 ) {
+    val context = LocalContext.current
+    val userPreferences = remember { UserPreferences(context) }
+
+    val viewModel: SignUpViewModel = viewModel(
+        factory = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return SignUpViewModel(userPreferences) as T
+            }
+        }
+    )
+
+    val uiState by viewModel.uiState.collectAsState()
+
+    // ✅ 상태 변화 감지 → 성공/실패 처리
+    when (val state = uiState) {
+        is SignUpUiState.Success -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+                onSignUpComplete()
+            }
+        }
+        is SignUpUiState.Error -> {
+            LaunchedEffect(state) {
+                Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+            }
+        }
+        else -> {}
+    }
+
     val name by viewModel.name.collectAsState()
     val id by viewModel.id.collectAsState()
     val password by viewModel.password.collectAsState()
@@ -39,7 +76,9 @@ fun SignUpScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(horizontal = 32.dp, vertical = 108.dp),
+            .padding(horizontal = 32.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState()),
+
         verticalArrangement = Arrangement.Top
     ) {
         IconButton(
@@ -97,7 +136,7 @@ fun SignUpScreen(
             isError = id.isNotEmpty() && !viewModel.isIdValid,
             supportingText = {
                 if (id.isNotEmpty() && !viewModel.isIdValid) {
-                    Text("4~20자, 영어, 숫자만 허용", fontSize = 12.sp, color = Color.Gray)
+                    Text("4~20자, 영문, 숫자만 허용", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
@@ -114,7 +153,7 @@ fun SignUpScreen(
             isError = password.isNotEmpty() && !viewModel.isPasswordValid,
             supportingText = {
                 if (password.isNotEmpty() && !viewModel.isPasswordValid) {
-                    Text("영문, 숫자, 특수문자 중 2가지 이상 포함, 8~20자", fontSize = 12.sp, color = Color.Gray)
+                    Text("영문, 숫자, 특수문자 포함, 8~20자", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             modifier = Modifier.fillMaxWidth(),
@@ -133,7 +172,9 @@ fun SignUpScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = onSignUpComplete,
+            onClick = {
+                viewModel.requestSignUp()
+            },
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF9800)),
             shape = RoundedCornerShape(16.dp),
             modifier = Modifier

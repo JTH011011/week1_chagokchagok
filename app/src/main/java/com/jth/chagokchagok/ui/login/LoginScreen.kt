@@ -19,9 +19,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jth.chagokchagok.ui.theme.ChagokchagokTheme
 import com.jth.chagokchagok.util.isValidId
 import com.jth.chagokchagok.util.isValidPassword
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+
 
 @Composable
 fun LoginScreen(
@@ -30,7 +34,7 @@ fun LoginScreen(
     onIdChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     onLoginClick: () -> Unit,
-    onSignUpClick: () -> Unit
+    onSignUpClick: () -> Unit,
 ) {
     var passwordVisible by remember { mutableStateOf(false) }
 
@@ -38,7 +42,8 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(horizontal = 32.dp, vertical = 144.dp),
+            .padding(horizontal = 32.dp, vertical = 32.dp)
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Top
     ) {
         Text(
@@ -76,7 +81,7 @@ fun LoginScreen(
             isError = id.isNotEmpty() && !isValidId(id),
             supportingText = {
                 if (id.isNotEmpty() && !isValidId(id)) {
-                    Text("영문 소문자/숫자만 허용, 4~20자", fontSize = 12.sp, color = Color.Gray)
+                    Text("영문/숫자만 허용, 4~20자", fontSize = 12.sp, color = Color.Gray)
                 }
             },
             modifier = Modifier.fillMaxWidth(),
